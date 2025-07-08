@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terapia Ocupacional | Vitta Integrale</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* --- ESTILOS GERAIS --- */
+        * {
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #7ABD3A;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 14px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .btn-whatsapp:hover {
+            background-color: #689b2f;
+        }
+        /* New style for the blue WhatsApp button */
+        .btn-whatsapp.blue {
+            background-color: #2876A8;
+        }
+        .btn-whatsapp.blue:hover {
+            background-color: #1f5a7e;
+        }
+
+        /* --- SEÇÃO DE SERVIÇO (HERO) --- */
+        .service-hero-section {
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+        .service-hero-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        .service-hero-content {
+            flex: 1;
+        }
+        .service-hero-content h1 {
+            font-size: 2.8rem;
+            color: #2876A8;
+            margin-top: 0;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .service-hero-content p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        .service-hero-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        .service-hero-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* --- SEÇÃO DE ESPECIALIDADES (ACCORDION) --- */
+        .specialties-section {
+            padding: 80px 20px;
+            background-color: #f8f9fa;
+        }
+        .section-title {
+            font-weight: 700;
+            color: #2876A8;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 50px;
+        }
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .accordion-item {
+            background-color: #fff;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(40, 118, 168, 0.08);
+            overflow: hidden;
+            border: 1px solid #e8e8e8;
+        }
+        .accordion-header {
+            width: 100%;
+            background-color: #fff;
+            border: none;
+            padding: 20px 25px;
+            text-align: left;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        .accordion-header:hover {
+            background-color: #f9f9f9;
+        }
+        .accordion-icon {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2876A8;
+            transition: transform 0.3s ease-in-out;
+        }
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+        .accordion-content-inner {
+            padding: 0px 25px 25px 25px;
+            color: #555;
+            line-height: 1.6;
+            border-top: 1px solid #e8e8e8;
+        }
+        .accordion-content-inner img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        /* --- SEÇÃO DE ESPECIALISTAS --- */
+        .specialists-section-detailed {
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+        .specialists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            justify-content: center;
+            gap: 30px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .professional-card-clickable {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .professional-card-clickable:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(40, 118, 168, 0.12);
+        }
+        .professional-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 4px solid #2876A8;
+        }
+        .professional-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .professional-name {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .professional-description-short {
+            color: #2876A8;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        /* --- ESTILOS DO MODAL (POP-UP) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            max-width: 650px;
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: slideUp 0.4s ease;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .modal-close:hover {
+            color: #333;
+        }
+        .modal-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #2876A8;
+            margin-bottom: 20px;
+        }
+        .modal-name {
+            font-size: 2rem;
+            color: #2876A8;
+            margin-bottom: 5px;
+        }
+        .modal-specialty {
+            font-size: 1.1rem;
+            color: #555;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+            text-align: left;
+            /* Added for better vertical responsiveness */
+            max-height: 200px; /* Limit height to prevent overflow for very long texts */
+            overflow-y: auto; /* Add scrollbar if content exceeds max-height */
+            margin-bottom: 15px; /* Adjust spacing */
+        }
+        #modal-whatsapp-btn {
+            margin-top: 25px;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* --- SEÇÃO CTA FINAL --- */
+        .final-cta-section {
+            background-color: #2876A8;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .final-cta-title {
+            color: white;
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            font-weight: 700;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* --- FOOTER --- */
+        .footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 40px 20px;
+        }
+        .footer-container {
+            max-width: 1200px; margin: 0 auto; display: flex; align-items: center;
+            justify-content: center; gap: 35px; flex-wrap: wrap;
+        }
+        .footer-logo-area a { display: block; }
+        .footer-logo { width: 180px; display: block; }
+        .footer-separator { width: 1px; background-color: rgba(255, 255, 255, 0.4); align-self: stretch; }
+        .footer-content-area { display: flex; flex-wrap: wrap; gap: 45px; flex-grow: 1; align-items: flex-start; }
+        .footer-column { text-align: left; }
+        .footer-column h3 { color: #fff; margin-top: 0; margin-bottom: 15px; font-size: 1.2rem; }
+        .footer-column p, .footer-column a { color: #bdc3c7; text-decoration: none; line-height: 1.6; font-size: 0.95rem; }
+        .footer-column a:hover { color: #fff; text-decoration: underline; }
+        .social-icons { margin-top: 10px; }
+        .social-icons a { margin: 0 10px 0 0; display: inline-block; transition: transform 0.2s ease; }
+        .social-icons a:hover { transform: scale(1.1); }
+        .footer-map { width: 280px; height: 170px; border-radius: 8px; border: 0; }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #34495e; font-size: 0.9rem; color: #95a5a6; }
+
+        /* --- BOTÃO FLUTUANTE WHATSAPP --- */
+        .floating-whatsapp-btn {
+            position: fixed; bottom: 40px; right: 30px; background-color: #7ABD3A; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease; z-index: 1000;
+        }
+        .floating-whatsapp-btn:hover { background-color: #689b2f; transform: scale(1.1); }
+        
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 950px) {
+            .footer-container { flex-direction: column; text-align: center; gap: 30px; }
+            .footer-separator { display: none; }
+            .footer-content-area { justify-content: center; }
+            .footer-column { text-align: center; }
+        }
+        @media (max-width: 768px) {
+            .service-hero-container { flex-direction: column; text-align: center; }
+            .service-hero-content h1 { font-size: 2.2rem; }
+            /* Modal responsiveness */
+            .modal-content {
+                max-width: 95%; /* Make it wider on smaller tablets/large phones */
+                padding: 25px; /* Keep reasonable padding */
+            }
+            .modal-name {
+                font-size: 1.8rem;
+            }
+            .modal-specialty {
+                font-size: 1.1rem;
+            }
+            .modal-image {
+                width: 160px; /* Slightly smaller image */
+                height: 160px;
+            }
+        }
+        @media (max-width: 576px) { /* Even smaller screens, typically phones */
+            .modal-content {
+                max-width: 90%; /* Adjust for better fit on narrower screens */
+                padding: 20px; /* Reduce padding slightly */
+            }
+            .modal-name {
+                font-size: 1.6rem; /* Adjust font size further */
+            }
+            .modal-specialty {
+                font-size: 1rem; /* Adjust font size further */
+                margin-bottom: 15px; /* Reduce bottom margin */
+            }
+            .modal-image {
+                width: 140px; /* Smaller image */
+                height: 140px;
+                margin-bottom: 15px; /* Reduce margin */
+            }
+            .modal-description {
+                font-size: 0.95rem; /* Smaller text for description */
+                max-height: 150px; /* Potentially reduce max-height for very long texts */
+            }
+            .btn-whatsapp.blue {
+                padding: 12px 20px; /* Adjust button padding */
+                font-size: 15px; /* Adjust button font size */
+            }
+        }
+        @media (max-width: 380px) { /* Very small phones */
+            .modal-content {
+                padding: 15px;
+            }
+            .modal-name {
+                font-size: 1.4rem;
+            }
+            .modal-specialty {
+                font-size: 0.9rem;
+            }
+            .modal-image {
+                width: 100px;
+                height: 100px;
+            }
+            .modal-description {
+                font-size: 0.85rem;
+                max-height: 120px; /* Adjust as needed */
+            }
+            .btn-whatsapp.blue {
+                padding: 10px 18px;
+                font-size: 14px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <section class="service-hero-section">
+            <div class="container service-hero-container">
+                <div class="service-hero-content">
+                    <h1>Terapia Ocupacional</h1>
+                    <p>
+                        A Terapia Ocupacional promove a saúde e o bem-estar através da ocupação. Nosso objetivo é capacitar as pessoas para participarem das atividades do dia a dia, utilizando abordagens personalizadas para ajudar crianças, adultos e idosos a alcançar independência, propósito e satisfação em todas as fases da vida.
+                    </p>
+                    <a href="https://wa.me/5516997308501" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 24 24"><path d="M20.52 3.48A11.947 11.947 0 0012.004 0C5.373 0 0 5.373 0 12c0 2.113.553 4.096 1.597 5.873L0 24l6.293-1.636A11.93 11.93 0 0012.004 24c6.627 0 12-5.373 12-12 0-3.192-1.243-6.188-3.48-8.52zM12 21.5a9.43 9.43 0 01-4.843-1.312l-.347-.207-3.735.971.998-3.641-.226-.375A9.446 9.446 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5S21.5 6.762 21.5 12 17.238 21.5 12 21.5zm5.262-7.49c-.29-.145-1.713-.844-1.98-.94-.266-.098-.46-.145-.654.145s-.75.938-.922 1.13c-.17.19-.34.215-.63.07-1.713-.844-2.836-1.504-3.965-3.42-.3-.52.3-.482.844-1.605.094-.19.047-.355-.025-.5-.072-.145-.654-1.577-.896-2.16-.237-.57-.48-.492-.66-.5-.17-.008-.36-.01-.55-.01s-.5.07-.76.355c-.26.285-1 1.008-1 2.465s1.027 2.86 1.17 3.06c.145.19 2.03 3.16 4.922 4.432.688.297 1.224.475 1.643.605.69.22 1.316.19 1.812.116.553-.082 1.713-.7 1.957-1.375.242-.676.242-1.256.17-1.375-.07-.12-.26-.19-.55-.33z"/></svg>
+                        Agende sua Avaliação
+                    </a>
+                </div>
+                <div class="service-hero-image">
+                    <img src="https://profisiocenter.com.br/wp-content/uploads/2023/01/terapia-ocupacional-na-saude-mental-qual-o-papel.jpg" alt="Sessão de Terapia Ocupacional na Vitta Integrale">
+                </div>
+            </div>
+        </section>
+
+        <section class="specialties-section">
+            <div class="container">
+                <h2 class="section-title">Nossas Áreas de Atuação em Terapia Ocupacional</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            Desenvolvimento Infantil
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Apoiamos crianças a desenvolverem habilidades essenciais para o brincar, aprender e socializar. Trabalhamos com condições como atraso no desenvolvimento, Transtorno do Espectro Autista (TEA) e dificuldades de processamento sensorial, criando estratégias para que atinjam seu pleno potencial.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            Reabilitação de Adultos e Idosos
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>Auxiliamos na recuperação da independência em atividades de autocuidado, trabalho e lazer após lesões, cirurgias ou condições neurológicas (como AVC). Para idosos, focamos na adaptação de ambientes para prevenção de quedas e na manutenção da autonomia e qualidade de vida.</p>
+                                <img src="https://blog.bellavida.com.br/wp-content/uploads/2022/10/terapia-ocupacional-em-idosos.jpg" alt="Ambiente de reabilitação na clínica">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                           Saúde Mental e Bem-Estar Cognitivo
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p>A Terapia Ocupacional é fundamental no tratamento de condições como depressão, ansiedade e estresse. Ajudamos a organizar rotinas, desenvolver estratégias de enfrentamento e a (re)descobrir atividades significativas que tragam propósito e melhorem o bem-estar emocional e a função cognitiva.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="specialists-section-detailed">
+            <div class="container">
+                <h2 class="section-title">Nossa Especialista</h2>
+                <div class="specialists-grid">
+                     <div class="professional-card-clickable" data-name="Mirella" data-specialty="Terapeuta Ocupacional com Foco Infantil" data-img="https://i.imgur.com/TwhkfvL.png" data-desc="Mirella é apaixonada por promover o desenvolvimento saudável e a autonomia das crianças. Com especialização em Terapia Ocupacional Pediátrica, ela atua com foco em integração sensorial, seletividade alimentar e no desenvolvimento de habilidades motoras e sociais através do brincar terapêutico. Seu objetivo é ajudar cada criança a superar desafios e a se engajar plenamente em suas ocupações diárias, como a escola e as atividades de autocuidado.">
+                        <div class="professional-image">
+                            <img src="https://i.imgur.com/TwhkfvL.png" alt="Mirella">
+                        </div>
+                        <h3 class="professional-name">Mirella</h3>
+                        <p class="professional-description-short">T.O. com Foco Infantil</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta-section">
+            <div class="container">
+                <h2 class="final-cta-title">Quer retomar suas atividades diárias com mais independência e confiança?</h2>
+                <a href="https://wa.me/5516997308501" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 24 24"><path d="M20.52 3.48A11.947 11.947 0 0012.004 0C5.373 0 0 5.373 0 12c0 2.113.553 4.096 1.597 5.873L0 24l6.293-1.636A11.93 11.93 0 0012.004 24c6.627 0 12-5.373 12-12 0-3.192-1.243-6.188-3.48-8.52zM12 21.5a9.43 9.43 0 01-4.843-1.312l-.347-.207-3.735.971.998-3.641-.226-.375A9.446 9.446 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5S21.5 6.762 21.5 12 17.238 21.5 12 21.5zm5.262-7.49c-.29-.145-1.713-.844-1.98-.94-.266-.098-.46-.145-.654.145s-.75.938-.922 1.13c-.17.19-.34.215-.63.07-1.713-.844-2.836-1.504-3.965-3.42-.3-.52.3-.482.844-1.605.094-.19.047-.355-.025-.5-.072-.145-.654-1.577-.896-2.16-.237-.57-.48-.492-.66-.5-.17-.008-.36-.01-.55-.01s-.5.07-.76.355c-.26.285-1 1.008-1 2.465s1.027 2.86 1.17 3.06c.145.19 2.03 3.16 4.922 4.432.688.297 1.224.475 1.643.605.69.22 1.316.19 1.812.116.553-.082 1.713-.7 1.957-1.375.242-.676.242-1.256.17-1.375-.07-.12-.26-.19-.55-.33z"/></svg>
+                    Fale com a gente no WhatsApp!
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contato" class="footer">
+        <div class="footer-container">
+            <div class="footer-logo-area">
+                <a href="#">
+                    <img src="https://i.imgur.com/mLUNyok.png" alt="Vitta Integrale Logo" class="footer-logo">
+                </a>
+            </div>
+    
+            <div class="footer-separator"></div>
+    
+            <div class="footer-content-area">
+                <div class="footer-column">
+                    <h3>Onde Estamos</h3>
+                    <p>R. 7 de setembro, 2457 - Centro,<br>São Carlos - SP, 13560-180</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=Rua+7+de+Setembro,2457,Centro,São+Carlos,SP" target="_blank" rel="noopener noreferrer">Ver no mapa</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contato</h3>
+                    <p>Telefone: <a href="tel:+5516997308501">(16) 99730-8501</a></p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/vitta_integrale/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0,0,256,256" style="fill:#FFFFFF;">
+                                <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M8,3c-2.757,0 -5,2.243 -5,5v8c0,2.757 2.243,5 5,5h8c2.757,0 5,-2.243 5,-5v-8c0,-2.757 -2.243,-5 -5,-5zM8,5h8c1.654,0 3,1.346 3,3v8c0,1.654 -1.346,3 -3,3h-8c-1.654,0 -3,-1.346 -3,-3v-8c0,-1.654 1.346,-3 3,-3zM17,6c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM12,7c-2.757,0 -5,2.243 -5,5c0,2.757 2.243,5 5,5c2.757,0 5,-2.243 5,-5c0,-2.757 -2.243,-5 -5,-5zM12,9c1.654,0 3,1.346 3,3c0,1.654 -1.346,3 -3,3c0,-1.654 1.346,-3 3,-3z"></path></g></g>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                 <div class="footer-column">
+                    <h3>Localização</h3>
+                    <iframe class="footer-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3698.83174981443!2d-47.88785818856645!3d-22.00595157957723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b870f455334239%3A0x7d8787f7358728ba!2sR.%207%20de%20Setembro%2C%202457%20-%20Centro%2C%20S%C3%A3o%20Carlos%20-%20SP%2C%2013560-180!5e0!3m2!1spt-BR!2sbr!4v1688758836173!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Vitta Integrale. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <div class="modal-overlay" id="specialist-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close-btn">×</span>
+            <img src="" alt="Foto do Especialista" class="modal-image" id="modal-img">
+            <h2 class="modal-name" id="modal-name"></h2>
+            <h3 class="modal-specialty" id="modal-specialty"></h3>
+            <p class="modal-description" id="modal-desc"></p>
+            <a href="#" id="modal-whatsapp-btn" class="btn-whatsapp blue" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffffff" viewBox="0 0 24 24"><path d="M20.52 3.48A11.947 11.947 0 0012.004 0C5.373 0 0 5.373 0 12c0 2.113.553 4.096 1.597 5.873L0 24l6.293-1.636A11.93 11.93 0 0012.004 24c6.627 0 12-5.373 12-12 0-3.192-1.243-6.188-3.48-8.52zM12 21.5a9.43 9.43 0 01-4.843-1.312l-.347-.207-3.735.971.998-3.641-.226-.375A9.446 9.446 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5S21.5 6.762 21.5 12 17.238 21.5 12 21.5zm5.262-7.49c-.29-.145-1.713-.844-1.98-.94-.266-.098-.46-.145-.654.145s-.75.938-.922 1.13c-.17.19-.34.215-.63.07-1.713-.844-2.836-1.504-3.965-3.42-.3-.52.3-.482.844-1.605.094-.19.047-.355-.025-.5-.072-.145-.654-1.577-.896-2.16-.237-.57-.48-.492-.66-.5-.17-.008-.36-.01-.55-.01s-.5.07-.76.355c-.26.285-1 1.008-1 2.465s1.027 2.86 1.17 3.06c.145.19 2.03 3.16 4.922 4.432.688.297 1.224.475 1.643.605.69.22 1.316.19 1.812.116.553-.082 1.713-.7 1.957-1.375.242-.676.242-1.256.17-1.375-.07-.12-.26-.19-.55-.33z"/></svg>
+                Fazer um agendamento
+            </a>
+        </div>
+    </div>
+
+
+    <a href="https://wa.me/5516997308501" class="floating-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Fale com a gente no WhatsApp">
+        <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#ffffff" viewBox="0 0 24 24"><path d="M20.52 3.48A11.947 11.947 0 0012.004 0C5.373 0 0 5.373 0 12c0 2.113.553 4.096 1.597 5.873L0 24l6.293-1.636A11.93 11.93 0 0012.004 24c6.627 0 12-5.373 12-12 0-3.192-1.243-6.188-3.48-8.52zM12 21.5a9.43 9.43 0 01-4.843-1.312l-.347-.207-3.735.971.998-3.641-.226-.375A9.446 9.446 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5S21.5 6.762 21.5 12 17.238 21.5 12 21.5zm5.262-7.49c-.29-.145-1.713-.844-1.98-.94-.266-.098-.46-.145-.654.145s-.75.938-.922 1.13c-.17.19-.34.215-.63.07-1.713-.844-2.836-1.504-3.965-3.42-.3-.52.3-.482.844-1.605.094-.19.047-.355-.025-.5-.072-.145-.654-1.577-.896-2.16-.237-.57-.48-.492-.66-.5-.17-.008-.36-.01-.55-.01s-.5.07-.76.355c-.26.285-1 1.008-1 2.465s1.027 2.86 1.17 3.06c.145.19 2.03 3.16 4.922 4.432.688.297 1.224.475 1.643.605.69.22 1.316.19 1.812.116.553-.082 1.713-.7 1.957-1.375.242-.676.242-1.256.17-1.375-.07-.12-.26-.19-.55-.33z"/></svg>
+        </span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // LÓGICA DO ACCORDION
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                const content = item.querySelector('.accordion-content');
+                header.addEventListener('click', () => {
+                    accordionItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                            otherItem.querySelector('.accordion-content').style.maxHeight = '0px';
+                        }
+                    });
+                    item.classList.toggle('active');
+                    if (item.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    } else {
+                        content.style.maxHeight = '0px';
+                    }
+                });
+            });
+
+            // LÓGICA PARA O MODAL DE ESPECIALISTAS
+            const professionalCards = document.querySelectorAll('.professional-card-clickable');
+            const modal = document.getElementById('specialist-modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalName = document.getElementById('modal-name');
+            const modalSpecialty = document.getElementById('modal-specialty');
+            const modalDesc = document.getElementById('modal-desc');
+            const closeModalBtn = document.getElementById('modal-close-btn');
+            const modalWhatsappBtn = document.getElementById('modal-whatsapp-btn'); // Pega o novo botão
+
+            if (modal) { 
+                professionalCards.forEach(card => {
+                    card.addEventListener('click', () => {
+                        // 1. Coletar dados do card
+                        const name = card.dataset.name;
+                        const specialty = card.dataset.specialty;
+                        const imgSrc = card.dataset.img;
+                        const desc = card.dataset.desc;
+
+                        // 2. Popular o modal com os dados
+                        modalImg.src = imgSrc;
+                        modalName.textContent = name;
+                        modalSpecialty.textContent = specialty;
+                        modalDesc.textContent = desc;
+
+                        // 3. Criar link personalizado do WhatsApp
+                        const message = `Olá! Gostaria de agendar uma avaliação com a especialista ${name}.`;
+                        const encodedMessage = encodeURIComponent(message);
+                        modalWhatsappBtn.href = `https://wa.me/5516997308501?text=${encodedMessage}`;
+
+                        // 4. Exibir o modal
+                        modal.style.display = 'flex';
+                    });
+                });
+
+                const closeModal = () => {
+                    modal.style.display = 'none';
+                };
+
+                closeModalBtn.addEventListener('click', closeModal);
+                modal.addEventListener('click', (event) => {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

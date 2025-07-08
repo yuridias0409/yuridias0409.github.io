@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitta Integrale - Cuidado Integral para a Sua Saúde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos Gerais */
+        * {
+            box-sizing: border-box;
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            overflow-x: hidden;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-weight: 900; /* Mais forte para títulos de seção */
+            color: #2876A8;
+            font-size: 2.5rem; /* Um pouco maior */
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 60px; /* Mais espaço */
+        }
+
+        /* Botões de WhatsApp */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: #7ABD3A;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 18px; /* Maior para CTA principal */
+            padding: 16px 32px; /* Maior para CTA principal */
+            border-radius: 30px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+        .btn-whatsapp:hover {
+            background-color: #689b2f;
+            transform: translateY(-3px);
+        }
+        /* Botão WhatsApp com estilo azul */
+        .btn-whatsapp.blue {
+            background-color: #2876A8;
+            box-shadow: 0 6px 16px rgba(40, 118, 168, 0.25);
+        }
+        .btn-whatsapp.blue:hover {
+            background-color: #1f5a7e;
+            transform: translateY(-3px);
+        }
+
+
+        /* Hero Section (Header) */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            height: 550px; /* Aumenta a altura */
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #ffffff;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)); /* Escurece a imagem */
+        }
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Fica atrás do conteúdo */
+        }
+        .hero-logo {
+            max-width: 250px; /* Aumenta o tamanho do logo */
+            margin-bottom: 20px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); /* Sombra para destacar */
+        }
+        .hero-title {
+            font-size: 3.5rem; /* Título maior e mais impactante */
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle {
+            font-size: 1.5rem; /* Subtítulo descritivo */
+            font-weight: 400;
+            margin-bottom: 40px;
+            max-width: 800px;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+        }
+
+        /* Seção Sobre Nós */
+        .about-us-section {
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+        .about-us-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .about-us-image-wrapper {
+            flex: 1 1 350px; /* Permite crescimento e encolhimento */
+            max-width: 450px; /* Aumenta o tamanho máximo da imagem */
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15); /* Sombra mais pronunciada */
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .about-us-image-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .about-us-content {
+            flex: 2 1 500px;
+            max-width: 600px;
+        }
+        .about-us-content h2 {
+            font-size: 2.8rem;
+            color: #2876A8;
+            margin-bottom: 25px;
+            font-weight: 900;
+        }
+        .about-us-content p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 25px;
+        }
+        .about-us-content strong {
+            color: #2876A8; /* Destaca "VITTA INTEGRALE" */
+        }
+        .about-us-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+            columns: 2; /* Em duas colunas */
+            column-gap: 40px;
+        }
+        .about-us-content li {
+            padding-left: 30px; /* Espaço para o ícone */
+            position: relative;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            color: #444;
+            line-height: 1.5;
+        }
+        .about-us-content li::before {
+            content: '✓'; /* Checkmark moderno */
+            font-size: 1.4rem;
+            color: #7ABD3A; /* Cor do WhatsApp para o check */
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+        }
+
+
+        /* Seção Nossos Serviços (Cards) */
+        .services-section {
+            padding: 80px 20px;
+            background-color: #f8f9fa;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Mais flexível */
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(40, 118, 168, 0.15);
+        }
+        .service-card-image {
+            width: 120px; /* Tamanho do círculo da imagem */
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #2876A8; /* Borda colorida */
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover .service-card-image img {
+            transform: scale(1.08);
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #2876A8;
+            margin-bottom: 10px;
+        }
+        .service-card p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #555;
+        }
+
+        /* Seção Destaques / Por que nos escolher */
+        .highlights-section {
+            padding: 80px 20px;
+            background-color: #e6f2f9; /* Azul claro */
+        }
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .highlight-item i {
+            font-size: 3rem;
+            color: #2876A8;
+            margin-bottom: 15px;
+        }
+        .highlight-item h3 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .highlight-item p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Seção Depoimentos */
+        .testimonials-section {
+            padding: 80px 20px;
+            background-color: #fff;
+        }
+        .testimonial-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            font-weight: 700;
+            color: #2876A8;
+            font-size: 1.15rem;
+        }
+        .testimonial-source {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        /* Para carrossel de depoimentos (se for implementar JS futuramente) */
+        .testimonials-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            gap: 30px;
+            padding-bottom: 20px;
+        }
+        .testimonials-carousel .testimonial-card {
+            flex: 0 0 90%; /* Ajuste para caber 1 depoimento por vez na maioria dos mobiles */
+            max-width: 500px; /* Limita a largura em telas maiores no carrossel */
+            scroll-snap-align: center;
+            margin: 0 15px; /* Espaçamento entre os cards no carrossel */
+        }
+        /* Remove o carrossel no desktop se for usar a grade */
+        @media (min-width: 769px) {
+            .testimonials-carousel {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 30px;
+                overflow-x: visible;
+                scroll-snap-type: none;
+                padding-bottom: 0;
+            }
+            .testimonials-carousel .testimonial-card {
+                flex: none;
+                max-width: none;
+                margin: 0;
+            }
+        }
+
+
+        /* Seção Nossos Profissionais */
+        .professionals-section {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+        }
+        .professionals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .professional-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .professional-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(40, 118, 168, 0.1);
+        }
+        .professional-image {
+            width: 180px; /* Ajusta o tamanho da imagem */
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 4px solid #2876A8;
+        }
+        .professional-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .professional-name {
+            font-weight: 700;
+            font-size: 1.3rem; /* Aumenta o tamanho do nome */
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .professional-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Final CTA Section */
+        .final-cta-section {
+            background-color: #2876A8;
+            padding: 60px 20px;
+            text-align: center;
+            color: #fff;
+        }
+        .final-cta-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        /* Footer */
+        .footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 50px 20px;
+            font-size: 0.95rem;
+        }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            justify-content: space-between;
+        }
+        .footer-logo-area {
+            grid-column: span 1; /* Ocupa uma coluna */
+            text-align: left;
+        }
+        .footer-logo {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+        .footer-column {
+            text-align: left;
+        }
+        .footer-column h3 {
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        .footer-column p, .footer-column a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 1.8;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .footer-column a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin-right: 15px;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+        .social-icons svg {
+            width: 35px;
+            height: 35px;
+            fill: #ffffff;
+        }
+        .footer-map {
+            width: 100%;
+            height: 180px;
+            border-radius: 8px;
+            border: 0;
+            margin-top: 15px;
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 25px;
+            border-top: 1px solid #34495e;
+            font-size: 0.85rem;
+            color: #95a5a6;
+        }
+
+        /* --- RESPONSIVIDADE GERAL --- */
+        @media (max-width: 1024px) {
+            .hero-title { font-size: 3rem; }
+            .hero-subtitle { font-size: 1.3rem; }
+            .about-us-container { gap: 40px; }
+            .about-us-content h2 { font-size: 2.4rem; }
+            .about-us-content p { font-size: 1.05rem; }
+            .about-us-content li { font-size: 1rem; }
+            .services-grid, .highlights-grid, .professionals-grid { gap: 25px; }
+            .service-card-image { width: 100px; height: 100px; }
+            .service-card h3 { font-size: 1.3rem; }
+            .professional-image { width: 160px; height: 160px; }
+            .professional-name { font-size: 1.2rem; }
+            .final-cta-title { font-size: 2rem; }
+            .footer-container { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        }
+
+        @media (max-width: 768px) {
+            .section-title { font-size: 2rem; margin-bottom: 40px; }
+            .hero-section { height: 450px; }
+            .hero-logo { max-width: 200px; }
+            .hero-title { font-size: 2.5rem; }
+            .hero-subtitle { font-size: 1.2rem; margin-bottom: 30px; }
+            .btn-whatsapp { padding: 14px 28px; font-size: 16px; }
+
+            .about-us-section, .services-section, .highlights-section, .testimonials-section, .professionals-section, .final-cta-section {
+                padding: 60px 20px;
+            }
+            .about-us-container { flex-direction: column; text-align: center; }
+            .about-us-image-wrapper { max-width: 100%; }
+            .about-us-content { max-width: 100%; }
+            .about-us-content h2 { font-size: 2.2rem; }
+            .about-us-content ul { columns: 1; text-align: left; } /* Uma coluna no mobile */
+            .about-us-content li { padding-left: 25px; font-size: 1rem; }
+            .about-us-content li::before { font-size: 1.2rem; }
+
+            .services-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+            .service-card { padding: 25px; }
+            .service-card-image { width: 100px; height: 100px; }
+            .service-card h3 { font-size: 1.4rem; }
+            .service-card p { font-size: 0.95rem; }
+
+            .highlights-grid { grid-template-columns: 1fr; } /* Uma coluna */
+            .highlight-item i { font-size: 2.5rem; }
+            .highlight-item h3 { font-size: 1.3rem; }
+            .highlight-item p { font-size: 0.95rem; }
+
+            .testimonials-carousel { /* Garante que o carrossel funciona bem */
+                padding: 0 10px; /* Ajuda a centralizar o card no viewport */
+            }
+            .testimonials-carousel .testimonial-card {
+                margin: 0 10px;
+            }
+
+            .professionals-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 colunas para profissionais */
+                gap: 20px;
+            }
+            .professional-image {
+                width: 120px;
+                height: 120px;
+            }
+            .professional-name { font-size: 1.1rem; }
+            .professional-description { font-size: 0.85rem; }
+
+            .final-cta-title { font-size: 1.8rem; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; gap: 25px; }
+            .footer-logo-area, .footer-column { text-align: center; }
+            .footer-logo { margin: 0 auto 20px auto; }
+            .social-icons { text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .section-title { font-size: 1.8rem; margin-bottom: 30px; }
+            .hero-section { height: 400px; }
+            .hero-logo { max-width: 180px; }
+            .hero-title { font-size: 2rem; }
+            .hero-subtitle { font-size: 1rem; margin-bottom: 25px; }
+            .btn-whatsapp { padding: 12px 24px; font-size: 15px; gap: 8px; }
+
+            .about-us-content h2 { font-size: 2rem; }
+            .about-us-content p { font-size: 1rem; }
+            .about-us-content li { font-size: 0.9rem; padding-left: 20px; }
+            .about-us-content li::before { font-size: 1.1rem; }
+
+            .services-grid { grid-template-columns: 1fr; gap: 20px; } /* Uma coluna para serviços */
+            .service-card { padding: 20px; }
+            .service-card-image { width: 90px; height: 90px; }
+            .service-card h3 { font-size: 1.2rem; }
+            .service-card p { font-size: 0.9rem; }
+
+            .professionals-grid {
+                grid-template-columns: 1fr; /* Uma coluna para profissionais em telas muito pequenas */
+            }
+            .professional-image {
+                width: 100px;
+                height: 100px;
+            }
+            .professional-name { font-size: 1rem; }
+            .professional-description { font-size: 0.8rem; }
+
+            .final-cta-title { font-size: 1.6rem; }
+            .footer-logo { width: 150px; }
+            .footer-column h3 { font-size: 1.1rem; }
+            .footer-column p, .footer-column a { font-size: 0.85rem; }
+            .social-icons svg { width: 28px; height: 28px; }
+            .floating-whatsapp-btn {
+                width: 50px;
+                height: 50px;
+                bottom: 25px;
+                right: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-section">
+        <img src="https://i.imgur.com/f8hkJE9.jpeg" alt="Background Abstrato Vitta Integrale" class="hero-background">
+        <img src="https://i.imgur.com/mLUNyok.png" alt="Vitta Integrale Logo" class="hero-logo">
+        <h1 class="hero-title">Cuidado Integral para Viver Plenamente</h1>
+        <p class="hero-subtitle">Sua saúde em foco, com especialistas multidisciplinares em um só lugar.</p>
+        <a href="https://wa.me/5516997308501" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#ffffff" viewBox="0 0 24 24"><path d="M20.52 3.48A11.947 11.947 0 0012.004 0C5.373 0 0 5.373 0 12c0 2.113.553 4.096 1.597 5.873L0 24l6.293-1.636A11.93 11.93 0 0012.004 24c6.627 0 12-5.373 12-12 0-3.192-1.243-6.188-3.48-8.52zM12 21.5a9.43 9.43 0 01-4.843-1.312l-.347-.207-3.735.971.998-3.641-.226-.375A9.446 9.446 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5S21.5 6.762 21.5 12 17.238 21.5 12 21.5zm5.262-7.49c-.29-.145-1.713-.844-1.98-.94-.266-.098-.46-.145-.654.145s-.75.938-.922 1.13c-.17.19-.34.215-.63.07-1.713-.844-2.836-1.504-3.965-3.42-.3-.52.3-.482.844-1.605.094-.19.047-.355-.025-.5-.072-.145-.654-1.577-.896-2.16-.237-.57-.48-.492-.66-.5-.17-.008-.36-.01-.55-.01s-.5.07-.76.355c-.26.285-1 1.008-1 2.465s1.027 2.86 1.17 3.06c.145.19 2.03 3.16 4.922 4.432.688.297 1.224.475 1.643.605.69.22 1.316.19 1.812.116.553-.082 1.713-.7 1.957-1.375.242-.676.242-1.256.17-1.375-.07-.12-.26-.19-.55-.33z"/></svg>
+            </span>
+            Agende sua Avaliação
+        </a>
+    </header>
+
+    <section id="about-us" class="about-us-section">
+        <div class="container about-us-container">
+            <div class="about-us-image-wrapper">
+                <img src="https://i.imgur.com/XLhTbz0.jpeg" alt="Equipe Vitta Integrale">
+            </div>
+            <div class="about-us-content">
+                <h2 class="section-title" style="text-align: left;">Sua Jornada de Saúde Começa Conosco</h2>
+                <p>Nossa história, que começou com a La Bella Fisioterapia, evoluiu para um propósito maior: oferecer um cuidado completo e integrado para você e sua família. Hoje, somos a <strong>VITTA INTEGRALE</strong>, uma clínica multidisciplinar que une excelência e atenção em um só lugar. Nossa equipe de especialistas trabalha de forma integrada para oferecer tratamentos personalizados e eficazes.</p>
+                <p>Acreditamos que a saúde vai além da ausência de doenças. É sobre bem-estar físico, mental e emocional. Por isso, nossa abordagem é <strong>integral</strong>, pensando em você como um todo.</p>
+                <ul>
+                    <li>Fisioterapia Geral</li>
+                    <li>Fisioterapia Pélvica</li>
+                    <li>Fisioterapia Pediátrica</li>
+                    <li>Fisioterapia Cardiorrespiratória</li>
+                    <li>Fisioterapia Neurológica</li>
+                    <li>Terapia Ocupacional</li>
+                    <li>Quiropraxia</li>
+                    <li>RPG e Pilates</li>
+                    <li>Odontologia</li>
+                    <li>Terapia ABA</li>
+                </ul>
+                <a href="https://wa.me/5516997308501" class="btn-whatsapp blue" target="_blank" rel="noopener noreferrer">
+                    <span class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#ffffff" viewBox="0 0 24 24"><path d="M20.52 3.48A11.947 11.947 0 0012.004 0C5.373 0 0 5.373 0 12c0 2.113.553 4.096 1.597 5.873L0 24l6.293-1.636A11.93 11.93 0 0012.004 24c6.627 0 12-5.373 12-12 0-3.192-1.243-6.188-3.48-8.52zM12 21.5a9.43 9.43 0 01-4.843-1.312l-.347-.207-3.735.971.998-3.641-.226-.375A9.446 9.446 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5S21.5 6.762 21.5 12 17.238 21.5 12 21.5zm5.262-7.49c-.29-.145-1.713-.844-1.98-.94-.266-.098-.46-.145-.654.145s-.75.938-.922 1.13c-.17.19-.34.215-.63.07-1.713-.844-2.836-1.504-3.965-3.42-.3-.52.3-.482.844-1.605.094-.19.047-.355-.025-.5-.072-.145-.654-1.577-.896-2.16-.237-.57-.48-.492-.66-.5-.17-.008-.36-.01-.55-.01s-.5.07-.76.355c-.26.285-1 1.008-1 2.465s1.027 2.86 1.17 3.06c.145.19 2.03 3.16 4.922 4.432.688.297 1.224.475 1.643.605.69.22 1.316.19 1.812.116.553-.082 1.713-.7 1.957-1.375.242-.676.242-1.256.17-1.375-.07-.12-.26-.19-.55-.33z"/></svg>
+                    </span>
+                    Fale com a gente!
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services-section">
+        <h2 class="section-title">Explore Nossos Serviços Integrados</h2>
+        <div class="services-grid">
+            <a href="https://www.vittaintegrale.com.br/servi%C3%A7os/fisioterapia" class="service-card">
+                <div class="service-card-image">
+                    <img src="https://i.imgur.com/O6pT4Ap.png" alt="Fisioterapia">
+                </div>
+                <h3>Fisioterapia</h3>
+                <p>Recupere o movimento e alivie dores com tratamentos personalizados.</p>
+            </a>
+            <a href="https://www.vittaintegrale.com.br/servi%C3%A7os/terapiaOcupacional" class="service-card">
+                <div class="service-card-image">
+                    <img src="https://i.imgur.com/T0vK4Sm.png" alt="Terapia Ocupacional">
+                </div>
+                <h3>Terapia Ocupacional</h3>
+                <p>Capacitamos você para as atividades diárias e a autonomia.</p>
+            </a>
+            <a href="https://www.vittaintegrale.com.br/servi%C3%A7os/drenagem" class="service-card">
+                <div class="service-card-image">
+                    <img src="https://i.imgur.com/08MnBrZ.png" alt="Drenagem Linfática">
+                </div>
+                <h3>Drenagem Linfática</h3>
+                <p>Reduza inchaços e toxinas, promovendo leveza e bem-estar.</p>
+            </a>
+            <a href="https://www.vittaintegrale.com.br/servi%C3%A7os/pilates" class="service-card">
+                <div class="service-card-image">
+                    <img src="https://i.imgur.com/Qmw0a7Z.png" alt="Pilates">
+                </div>
+                <h3>Pilates</h3>
+                <p>Fortaleça corpo e mente, melhore postura e flexibilidade.</p>
+            </a>
+            <a href="https://www.vittaintegrale.com.br/servi%C3%A7os/odontologia" class="service-card">
+                <div class="service-card-image">
+                    <img src="https://i.imgur.com/CdkcztU.png" alt="Odontologia">
+                </div>
+                <h3>Odontologia</h3>
+                <p>Cuide da sua saúde bucal e transforme seu sorriso.</p>
+            </a>
+             <a href="https://wa.me/5516997308501?text=Olá! Gostaria de saber mais sobre a Quiropraxia." class="service-card">
+                <div class="service-card-image">
+                    <img src="https://i.imgur.com/your-chiropractic-icon.png" alt="Quiropraxia">
+                </div>
+                <h3>Quiropraxia</h3>
+                <p>Alívio de dores na coluna e melhora da saúde da sua coluna.</p>
+            </a>
+            <a href="https://wa.me/5516997308501?text=Olá! Gostaria de saber mais sobre a Terapia ABA." class="service-card">
+                <div class="service-card-image">
+                    <img src="https://i.imgur.com/your-aba-therapy-icon.png" alt="Terapia ABA">
+                </div>
+                <h3>Terapia ABA</h3>
+                <p>Desenvolvimento e autonomia para crianças com necessidades especiais.</p>
+            </a>
+        </div>
+    </section>
+
+    <section class="highlights-section">
+        <h2 class="section-title">Por Que Escolher a Vitta Integrale?</h2>
+        <div class="container highlights-grid">
+            <div class="highlight-item">
+                <i class="fas fa-hand-holding-heart"></i> <h3>Cuidado Humanizado</h3>
+                <p>Valorizamos o acolhimento e a escuta, tratando cada paciente com a atenção e respeito que merece.</p>
+            </div>
+            <div class="highlight-item">
+                <i class="fas fa-users"></i> <h3>Equipe Especializada</h3>
+                <p>Profissionais experientes em diversas áreas da saúde, trabalhando juntos para o seu bem-estar.</p>
+            </div>
+            <div class="highlight-item">
+                <i class="fas fa-clinic-medical"></i> <h3>Estrutura Moderna</h3>
+                <p>Ambiente confortável e equipamentos de ponta para os melhores resultados no seu tratamento.</p>
+            </div>
+            <div class="highlight-item">
+                <i class="fas fa-comments"></i> <h3>Atendimento Personalizado</h3>
+                <p>Planos de tratamento desenvolvidos sob medida para suas necessidades e objetivos únicos.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <h2 class="section-title">O Que Nossos Pacientes Dizem</h2>
+        <div class="container testimonials-carousel">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Na Vitta Integrale encontrei um atendimento que realmente se importa. A fisioterapia me ajudou muito com minhas dores na coluna e o ambiente é super acolhedor."</p>
+                <p class="testimonial-author">Maria S.</p>
+                <p class="testimonial-source">Paciente de Fisioterapia</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Levei meu filho para a Terapia Ocupacional e o desenvolvimento dele tem sido incrível. A Mirella é uma profissional maravilhosa!"</p>
+                <p class="testimonial-author">Ana L.</p>
+                <p class="testimonial-source">Mãe de paciente</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Fiz drenagem pós-cirúrgica e os resultados foram fantásticos. A recuperação foi muito mais rápida e sem fibrose. Recomendo demais!"</p>
+                <p class="testimonial-author">Fernanda C.</p>
+                <p class="testimonial-source">Paciente de Drenagem Linfática</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="professionals" class="professionals-section">
+        <h2 class="section-title">Conheça Nossos Especialistas</h2>
+        <div class="professionals-grid">
+            <div class="professional-card">
+                <div class="professional-image">
+                    <img src="https://i.imgur.com/hd60ULF.png" alt="Érika Shirley"> </div>
+                <h3 class="professional-name">Érika Shirley</h3>
+                <p class="professional-description">Fisioterapeuta Pediátrica e Neurológica</p>
+            </div>
+            <div class="professional-card">
+                <div class="professional-image">
+                    <img src="https://i.imgur.com/QgGBQq6.png" alt="Karina"> </div>
+                <h3 class="professional-name">Karina</h3>
+                <p class="professional-description">Fisioterapeuta Ortopédica e Instrutora de Pilates</p>
+            </div>
+            <div class="professional-card">
+                <div class="professional-image">
+                    <img src="https://i.imgur.com/TwhkfvL.png" alt="Mirella"> </div>
+                <h3 class="professional-name">Mirella</h3>
+                <p class="professional-description">Terapeuta Ocupacional com Foco Infantil</p>
+            </div>
+            <div class="professional-card">
+                <div class="professional-image">
+                    <img src="https://i.imgur.com/HYTDqg0.png" alt="Elaine"> </div>
+                <h3 class="professional-name">Elaine</h3>
+                <p class="professional-description">Fisioterapeuta Cardiorrespiratória</p>
+            </div>
+            <div class="professional-card">
+                <div class="professional-image">
+                    <img src="https://i.imgur.com/K4r8aUj.jpeg" alt="Lucas"> </div>
+                <h3 class="professional-name">Dr. Lucas</h3>
+                <p class="professional-description">Especialista em Implantodontia e Reabilitação Oral</p>
+            </div>
+            <div class="professional-card">
+                <div class="professional-image">
+                    <img src="http://i.imgur.com/VKa9s0h.png" alt="Eduarda"> </div>
+                <h3 class="professional-name">Eduarda</h3>
+                <p class="professional-description">Fisioterapeuta (exemplo: Dermato-Funcional)</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta-section">
+        <h2 class="final-cta-title">Pronto para dar o primeiro passo em direção a uma vida mais saudável e feliz?</h2>
+        <a href="https://wa.me/5516997308501" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">
+            <span class="icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#ffffff" viewBox="0 0 24 24"><path d="M20.52 3.48A11.947 11.947 0 0012.004 0C5.373 0 0 5.373 0 12c0 2.113.553 4.096 1.597 5.873L0 24l6.293-1.636A11.93 11.93 0 0012.004 24c6.627 0 12-5.373 12-12 0-3.192-1.243-6.188-3.48-8.52zM12 21.5a9.43 9.43 0 01-4.843-1.312l-.347-.207-3.735.971.998-3.641-.226-.375A9.446 9.446 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5S21.5 6.762 21.5 12 17.238 21.5 12 21.5zm5.262-7.49c-.29-.145-1.713-.844-1.98-.94-.266-.098-.46-.145-.654.145s-.75.938-.922 1.13c-.17.19-.34.215-.63.07-1.713-.844-2.836-1.504-3.965-3.42-.3-.52.3-.482.844-1.605.094-.19.047-.355-.025-.5-.072-.145-.654-1.577-.896-2.16-.237-.57-.48-.492-.66-.5-.17-.008-.36-.01-.55-.01s-.5.07-.76.355c-.26.285-1 1.008-1 2.465s1.027 2.86 1.17 3.06c.145.19 2.03 3.16 4.922 4.432.688.297 1.224.475 1.643.605.69.22 1.316.19 1.812.116.553-.082 1.713-.7 1.957-1.375.242-.676.242-1.256.17-1.375-.07-.12-.26-.19-.55-.33z"/></svg>
+            </span>
+            Fale com a gente no WhatsApp!
+        </a>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo-area">
+                <a href="#">
+                    <img src="https://i.imgur.com/mLUNyok.png" alt="Vitta Integrale Logo" class="footer-logo">
+                </a>
+                <p style="color: #bdc3c7; margin-top: 15px;">Cuidado integral para a sua saúde e bem-estar.</p>
+            </div>
+    
+            <div class="footer-column">
+                <h3>Onde Estamos</h3>
+                <p>R. 7 de setembro, 2457 - Centro,<br>São Carlos - SP, 13560-180</p>
+                <a href="https://www.google.com/maps/dir/?api=1&destination=Rua+7+de+setembro,+2457+-+Centro,+São+Carlos+-+SP,+13560-180" target="_blank" rel="noopener noreferrer">Ver no mapa</a>
+            </div>
+            <div class="footer-column">
+                <h3>Contato</h3>
+                <p>Telefone: <a href="tel:+5516997308501">(16) 99730-8501</a></p>
+                <div class="social-icons">
+                      <a href="https://www.instagram.com/vitta_integrale/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="30" height="30" viewBox="0,0,256,256" style="fill:#FFFFFF;">
+                            <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(10.66667,10.66667)"><path d="M8,3c-2.757,0 -5,2.243 -5,5v8c0,2.757 2.243,5 5,5h8c2.757,0 5,-2.243 5,-5v-8c0,-2.757 -2.243,-5 -5,-5zM8,5h8c1.654,0 3,1.346 3,3v8c0,1.654 -1.346,3 -3,3h-8c-1.654,0 -3,-1.346 -3,-3v-8c0,-1.654 1.346,-3 3,-3zM17,6c-0.55228,0 -1,0.44772 -1,1c0,0.55228 0.44772,1 1,1c0.55228,0 1,-0.44772 1,-1c0,-0.55228 -0.44772,-1 -1,-1zM12,7c-2.757,0 -5,2.243 -5,5c0,2.757 2.243,5 5,5c2.757,0 5,-2.243 5,-5c0,-2.757 -2.243,-5 -5,-5zM12,9c1.654,0 3,1.346 3,3c0,1.654 -1.346,3 -3,3c0,-1.654 1.346,-3 3,-3z"></path></g></g>
+                        </svg>
+                      </a>
+                    </div>
+                </div>
+                 <div class="footer-column">
+                    <h3>Localização</h3>
+                    <iframe class="footer-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3698.814986877021!2d-47.88939798835016!3d-21.993774879207034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94b870b22d1a3a6b%3A0x6b4f7a7f4a7b7c!2sR.+7+de+Setembro%2C+2457+-+Centro%2C+S%C3%A3o+Carlos+-+SP%2C+13560-180!5e0!3m2!1spt-BR!2sbr!4v1700769396347!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        <div class="footer-bottom">
+            <p>© 2025 Vitta Integrale. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5516997308501" class="floating-whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Fale com a gente no WhatsApp">
+        <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#ffffff" viewBox="0 0 24 24"><path d="M20.52 3.48A11.947 11.947 0 0012.004 0C5.373 0 0 5.373 0 12c0 2.113.553 4.096 1.597 5.873L0 24l6.293-1.636A11.93 11.93 0 0012.004 24c6.627 0 12-5.373 12-12 0-3.192-1.243-6.188-3.48-8.52zM12 21.5a9.43 9.43 0 01-4.843-1.312l-.347-.207-3.735.971.998-3.641-.226-.375A9.446 9.446 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5S21.5 6.762 21.5 12 17.238 21.5 12 21.5zm5.262-7.49c-.29-.145-1.713-.844-1.98-.94-.266-.098-.46-.145-.654.145s-.75.938-.922 1.13c-.17.19-.34.215-.63.07-1.713-.844-2.836-1.504-3.965-3.42-.3-.52.3-.482.844-1.605.094-.19.047-.355-.025-.5-.072-.145-.654-1.577-.896-2.16-.237-.57-.48-.492-.66-.5-.17-.008-.36-.01-.55-.01s-.5.07-.76.355c-.26.285-1 1.008-1 2.465s1.027 2.86 1.17 3.06c.145.19 2.03 3.16 4.922 4.432.688.297 1.224.475 1.643.605.69.22 1.316.19 1.812.116.553-.082 1.713-.7 1.957-1.375.242-.676.242-1.256.17-1.375-.07-.12-.26-.19-.55-.33z"/></svg>
+        </span>
+    </a>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> 
+    </body>
+</html>
